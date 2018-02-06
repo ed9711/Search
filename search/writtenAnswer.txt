@@ -1,0 +1,22 @@
+1. 
+	1a. The successor function would have a branching factor of two because two side of the Pacman
+	would be walls.
+	1b. The branching factor would be 4 because Pacman would be surrounded by space that it can
+	move to.
+	1c. The maximum possible depth of search space is N*N-1 if depth start from 0. This is because 
+	there is no interior wall, so the the successor function can always find a successor for a node 
+	until all the nodes have been found. Therefore the successor function works like a depth first 
+	search that never looks back.
+2. 
+	2a. For A* search, when h(n) > 0 for some n, the number of nodes expanded can be no larger 
+	than uniform cost. Thus, at the time the solution is found, if cost for the solution is c, then
+	n <= c
+
+3. 
+	3a. Optimal because h(n) for A* is <= optimal, and g(n) is the actual cost, and h(n) is monotone.
+	3b. Not optimal because when h(n) is monotone, h(n) <= h*(n), 3h(n) <= 3h*(n). The ratio is 3
+	3c. Optimal because h(n) for A* is <= optimal.
+4. 
+	4a. h1 should be used when there are heavy space requirement but lax time requirement.
+	4b. h2 should be used when there are fast time requirement but lots of space are availible allowing 
+	for more expended states.

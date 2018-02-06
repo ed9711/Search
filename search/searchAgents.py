@@ -355,6 +355,7 @@ class CornersProblem(search.SearchProblem):
                     if successor == self.corners[i]:
                         self.seenCorners[i] = True
                 seenCorners = [self.seenCorners[0], self.seenCorners[1], self.seenCorners[2], self.seenCorners[3]]
+                #has to be a list, or else weird things happen
                 successors.append(((successor, seenCorners), action, 1))
 
         self._expanded += 1  # DO NOT CHANGE

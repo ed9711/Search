@@ -89,8 +89,7 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     nextNodes = util.Stack()
-    expended = []
-    currentNode = [problem.getStartState(), [], 0]
+    currentNode = [problem.getStartState(), [], 0, []]
     nextNodes.push(currentNode)
 
     while not nextNodes.isEmpty():
@@ -98,12 +97,13 @@ def depthFirstSearch(problem):
         if problem.isGoalState(currentNode[0]):
             return currentNode[1]
 
-        if currentNode[0] not in expended:
-            expended.append(currentNode[0])
+        elif currentNode[0] not in currentNode[3]:
+            currentNode[3].append(currentNode[0])
             for node in problem.getSuccessors(currentNode[0]):
                 actions = currentNode[1] + [node[1]]
-                nextNodes.push((node[0], actions, currentNode[2] + node[2]))
+                nextNodes.push((node[0], actions, currentNode[2] + node[2], currentNode[3]))
 
+    return False
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
@@ -117,12 +117,13 @@ def breadthFirstSearch(problem):
         if problem.isGoalState(currentNode[0]):
             return currentNode[1]
 
-        if currentNode[0] not in expended:
+        elif currentNode[0] not in expended:
             expended.append(currentNode[0])
             for node in problem.getSuccessors(currentNode[0]):
                 actions = currentNode[1] + [node[1]]
                 nextNodes.push((node[0], actions, currentNode[2] + node[2]))
 
+    return False
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
@@ -136,12 +137,13 @@ def uniformCostSearch(problem):
         if problem.isGoalState(currentNode[0]):
             return currentNode[1]
 
-        if currentNode[0] not in expended:
+        elif currentNode[0] not in expended:
             expended.append(currentNode[0])
             for node in problem.getSuccessors(currentNode[0]):
                 actions = currentNode[1] + [node[1]]
                 nextNodes.push((node[0], actions, currentNode[2] + node[2]), currentNode[2] + node[2])
 
+    return False
 
 def nullHeuristic(state, problem=None):
     """
@@ -164,7 +166,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         if problem.isGoalState(currentNode[0]):
             return currentNode[1]
 
-        if currentNode[0] not in expended:
+        elif currentNode[0] not in expended:
             expended.append(currentNode[0])
             for node in problem.getSuccessors(currentNode[0]):
                 actions = currentNode[1] + [node[1]]
@@ -172,7 +174,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
                 nextNodes.push((node[0], actions, cost), heuristic(node[0], problem) + cost)
 
 
-
+    return False
 
 
 
