@@ -9,8 +9,10 @@
 	search that never looks back.
 2. 
 	2a. For A* search, when h(n) > 0 for some n, the number of nodes expanded can be no larger 
-	than uniform cost. Thus, at the time the solution is found, if cost for the solution is c, then
-	n <= c
+	than uniform cost. Thus, at the time the solution is found, if ctotal is the cost of the optimal 
+	solution path, the number of nodes <= 4^(ctotal/cmin). Since each node corresponds to 
+	a different path, at most there can be O(4^(ctotal/cmin)) number of paths. 
+	2b. 
 
 3. 
 	3a. Optimal because h(n) for A* is <= optimal, and g(n) is the actual cost, and h(n) is monotone.
